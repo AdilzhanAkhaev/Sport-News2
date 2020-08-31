@@ -8,15 +8,14 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
+
 class NewsViewController: UIViewController{
     let image = UIImageView()
     let titleA = UILabel()
     let author = UILabel()
     let content = UILabel()
-    var arcticleArray = [Article]()
     let scrollView = UIScrollView()
-    let realm = try! Realm()
+    var viewModel = NewsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +31,11 @@ class NewsViewController: UIViewController{
     }
 
     @objc func saveNews() {
-        try! realm.write {
-            let myReal = SaveNews()
-            myReal.article = arcticleArray.first
-            realm.add(myReal)
-        }
+        viewModel.saveNews()
     }
     
     func set(article: Article) {
-        arcticleArray.append(article)
+        viewModel.setArticle(article: article)
         if let url = URL(string: article.urlToImage ?? ""){
             self.image.kf.setImage(with: url)
         }

@@ -28,6 +28,7 @@
 		A3B43CAA24FA5A6300269D08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CA924FA5A6300269D08 /* ViewModelProtocol.swift */; };
 		A3B43CAC24FA673F00269D08 /* SavedModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CAB24FA673F00269D08 /* SavedModelView.swift */; };
 		A3B43CAF24FC54C000269D08 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CAE24FC54C000269D08 /* Constant.swift */; };
+		A3F7AAF024FD8FEF0061BAA0 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F7AAEF24FD8FEF0061BAA0 /* NewsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		A3B43CA924FA5A6300269D08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		A3B43CAB24FA673F00269D08 /* SavedModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedModelView.swift; sourceTree = "<group>"; };
 		A3B43CAE24FC54C000269D08 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A3F7AAEF24FD8FEF0061BAA0 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		FF59FA3648FFDCE69E90BC5C /* Pods_Sport_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sport_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 				A33CFA5C24F7D59D009B45AB /* EverythingModelView.swift */,
 				A3B43CAB24FA673F00269D08 /* SavedModelView.swift */,
 				A3B43CA924FA5A6300269D08 /* ViewModelProtocol.swift */,
+				A3F7AAEF24FD8FEF0061BAA0 /* NewsViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				A33CFA4A24F7A331009B45AB /* TabbarViewController.swift in Sources */,
 				A33CFA2424F6B15D009B45AB /* ApiService.swift in Sources */,
 				A33CFA1F24F69B65009B45AB /* News.swift in Sources */,
+				A3F7AAF024FD8FEF0061BAA0 /* NewsViewModel.swift in Sources */,
 				A33CFA5D24F7D59D009B45AB /* EverythingModelView.swift in Sources */,
 				A33CFA0C24F692F0009B45AB /* SceneDelegate.swift in Sources */,
 				A3B43CAF24FC54C000269D08 /* Constant.swift in Sources */,
