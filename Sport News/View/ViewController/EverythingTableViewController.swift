@@ -36,9 +36,8 @@ class EverythingTableViewController: UITableViewController {
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        self.viewModel.pageNumber = 1
-        self.viewModel.fetchData()
         DispatchQueue.main.async {
+            self.viewModel.fetchData()
             self.refreshControl!.endRefreshing()
         }
     }
@@ -63,8 +62,8 @@ class EverythingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == viewModel.articleCount - 1{
-//            viewModel.pageNumber = viewModel.pageNumber + 1
-            viewModel.fetchData()
+            viewModel.pageNumber = viewModel.pageNumber + 1
+            viewModel.loadMoreData()
         }
     }
 }

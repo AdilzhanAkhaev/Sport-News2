@@ -13,6 +13,7 @@ class SavedModelView: ViewModelProtocol {
     var pageNumber = 1
     var articles = Observable<[Article]>([])
     var provider = MoyaProvider<ApiService>()
+    let realm = try! Realm()
     var articleCount: Int{
         return articles.value.count
     }
@@ -20,7 +21,7 @@ class SavedModelView: ViewModelProtocol {
     func getArtile(for indexPath: Int) -> Article {
         return articles.value[indexPath]
     }
-    let realm = try! Realm()
+    
     func fetchData() {
         articles.value = []
         let result = realm.objects(SaveNews.self)
@@ -30,7 +31,7 @@ class SavedModelView: ViewModelProtocol {
             }
         }
     }
-    func removeAll() {
-        articles = Observable<[Article]>([])
+    func loadMoreData() {
+        return
     }
 }

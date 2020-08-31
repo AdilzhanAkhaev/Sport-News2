@@ -49,8 +49,8 @@ class TopHeadliensTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == viewModel.articleCount - 1{
-//            viewModel.pageNumber = viewModel.pageNumber + 1
-            viewModel.fetchData()
+            viewModel.pageNumber = viewModel.pageNumber + 1
+            viewModel.loadMoreData()
         }
     }
 }

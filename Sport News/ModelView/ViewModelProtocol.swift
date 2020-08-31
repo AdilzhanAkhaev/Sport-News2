@@ -15,4 +15,5 @@ protocol ViewModelProtocol {
     var pageNumber : Int { get set }
     func getArtile(for indexPath: Int) -> Article
     func fetchData()
+    func loadMoreData()
 }

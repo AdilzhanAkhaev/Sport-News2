@@ -22,6 +22,7 @@ class EverythingModelView: ViewModelProtocol{
 //MARK: - Network
 extension EverythingModelView{
     func fetchData(){
+        pageNumber = 1
         provider.request(.getEverything(pageNumber: pageNumber)) { result in
             switch result {
                 case let .success(moyaResponse):
@@ -30,16 +31,32 @@ extension EverythingModelView{
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         let news = try decoder.decode(News.self, from: data)
-                        
                         self.articles.value = news.articles
-//                        for article in news.articles{
-//                            self.articles.value.append(article)
-//                        }
                     }catch{
                         print("Error with decoding News: \(error)")
                     }
                 case .failure(_): break
             }
         }
+    }
+    
+    func loadMoreData() {
+                provider.request(.getEverything(pageNumber: pageNumber)) { result in
+                    switch result {
+                        case let .success(moyaResponse):
+                            do {
+                                let data = try moyaResponse.filterSuccessfulStatusCodes().data
+                                let decoder = JSONDecoder()
+                                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                                let news = try decoder.decode(News.self, from: data)
+                                for article in news.articles{
+                                    self.articles.value.append(article)
+                                }
+                            }catch{
+                                print("Error with decoding News: \(error)")
+                            }
+                        case .failure(_): break
+                    }
+                }
     }
 }
