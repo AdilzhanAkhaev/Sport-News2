@@ -28,6 +28,7 @@ class SavedTableViewController: UITableViewController {
            tableView.rowHeight = 100
            tableView.register(CustemTableViewCell.self, forCellReuseIdentifier: Key.cellIdentifier)
        }
+    
     func addRefreshControl() {
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)

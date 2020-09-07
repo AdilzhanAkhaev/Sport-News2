@@ -21,6 +21,9 @@ class TopHeadliensTableViewController: UITableViewController {
         viewModel.articles.bind {_ in
             self.tableView.reloadData()
         }
+        viewModel.didLoadMoreArticles.bind { (state) in
+            self.tableView.tableFooterView?.isHidden = state
+        }
     }
 
     func configureTableView() {
@@ -28,6 +31,10 @@ class TopHeadliensTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.rowHeight = 100
         tableView.register(CustemTableViewCell.self, forCellReuseIdentifier: Key.cellIdentifier)
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
     }
     //MARK: - TableView DataSource and Delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

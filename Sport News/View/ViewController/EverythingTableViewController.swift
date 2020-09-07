@@ -18,7 +18,14 @@ class EverythingTableViewController: UITableViewController {
         viewModel.articles.bind {_ in
             self.tableView.reloadData()
         }
-        addRefreshControl()
+        viewModel.didUpdateArticles.bind { (state) in
+            if state {
+                self.refreshControl!.endRefreshing()
+            }
+        }
+        viewModel.didLoadMoreArticles.bind { (state) in
+            self.tableView.tableFooterView?.isHidden = state
+        }
     }
     
     func configureTableView() {
@@ -26,20 +33,19 @@ class EverythingTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.rowHeight = 100
         tableView.register(CustemTableViewCell.self, forCellReuseIdentifier: Key.cellIdentifier)
-    }
-    
-    func addRefreshControl() {
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(self.refreshControl!)
-
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+        self.tableView.tableFooterView = spinner
     }
     
     @objc func refresh(_ sender: AnyObject) {
-        DispatchQueue.main.async {
+        self.refreshControl!.sizeThatFits(CGSize(width: view.bounds.width, height: CGFloat(44)))
             self.viewModel.fetchData()
-            self.refreshControl!.endRefreshing()
-        }
+        
     }
     
     //MARK: - TableView DataSource and Delegate

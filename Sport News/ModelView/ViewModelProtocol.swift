@@ -16,4 +16,5 @@ protocol ViewModelProtocol {
     func getArtile(for indexPath: Int) -> Article
     func fetchData()
     func loadMoreData()
+    var didLoadMoreArticles : Observable<Bool> { get set }
 }

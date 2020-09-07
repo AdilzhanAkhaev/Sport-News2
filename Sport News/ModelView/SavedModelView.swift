@@ -10,6 +10,7 @@ import Foundation
 import Moya
 import RealmSwift
 class SavedModelView: ViewModelProtocol {
+    var didLoadMoreArticles = Observable<Bool>(false)
     var pageNumber = 1
     var articles = Observable<[Article]>([])
     var provider = MoyaProvider<ApiService>()

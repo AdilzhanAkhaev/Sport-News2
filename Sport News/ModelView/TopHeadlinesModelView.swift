@@ -14,10 +14,11 @@ class TopHeadlinesModelView: ViewModelProtocol{
     var articleCount: Int {
         return articles.value.count
     }
-    var pageNumber = 1
+    var pageNumber = 0
     func getArtile(for indexPath: Int) -> Article {
         return articles.value[indexPath]
     }
+    var didLoadMoreArticles = Observable<Bool>(false)
 }
 //MARK: - Network
 extension TopHeadlinesModelView{
@@ -41,22 +42,24 @@ extension TopHeadlinesModelView{
     }
     
     func loadMoreData() {
-                provider.request(.getTopHeadliens(pageNumber: pageNumber)) { result in
-                    switch result {
-                    case let .success(moyaResponse):
-                        do {
-                            let data = try moyaResponse.filterSuccessfulStatusCodes().data
-                            let decoder = JSONDecoder()
-                            decoder.keyDecodingStrategy = .convertFromSnakeCase
-                            let news = try decoder.decode(News.self, from: data)
-                            for article in news.articles{
-                                self.articles.value.append(article)
-                            }
-                        }catch{
-                            print("Error with decoding News: \(error)")
-                        }
-                    case .failure(_): break
+        self.didLoadMoreArticles.value = false
+        provider.request(.getTopHeadliens(pageNumber: pageNumber)) { result in
+            switch result {
+            case let .success(moyaResponse):
+                do {
+                    let data = try moyaResponse.filterSuccessfulStatusCodes().data
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let news = try decoder.decode(News.self, from: data)
+                    for article in news.articles{
+                        self.articles.value.append(article)
                     }
+                }catch{
+                    print("Error with decoding News: \(error)")
                 }
+                self.didLoadMoreArticles.value = true
+            case .failure(_): break
+            }
+        }
     }
 }
