@@ -25,6 +25,7 @@
 		A33CFA5D24F7D59D009B45AB /* EverythingModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33CFA5C24F7D59D009B45AB /* EverythingModelView.swift */; };
 		A33CFA6224F8E833009B45AB /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33CFA6124F8E833009B45AB /* NewsViewController.swift */; };
 		A33CFA6824F910CE009B45AB /* SaveNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33CFA6724F910CE009B45AB /* SaveNews.swift */; };
+		A3A145F22504FCA2005B2233 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A145F12504FCA2005B2233 /* NewsView.swift */; };
 		A3B43CAA24FA5A6300269D08 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CA924FA5A6300269D08 /* ViewModelProtocol.swift */; };
 		A3B43CAC24FA673F00269D08 /* SavedModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CAB24FA673F00269D08 /* SavedModelView.swift */; };
 		A3B43CAF24FC54C000269D08 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B43CAE24FC54C000269D08 /* Constant.swift */; };
@@ -53,6 +54,7 @@
 		A33CFA5C24F7D59D009B45AB /* EverythingModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverythingModelView.swift; sourceTree = "<group>"; };
 		A33CFA6124F8E833009B45AB /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		A33CFA6724F910CE009B45AB /* SaveNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNews.swift; sourceTree = "<group>"; };
+		A3A145F12504FCA2005B2233 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		A3B43CA924FA5A6300269D08 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		A3B43CAB24FA673F00269D08 /* SavedModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedModelView.swift; sourceTree = "<group>"; };
 		A3B43CAE24FC54C000269D08 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				A33CFA4D24F7A3B6009B45AB /* EverythingTableViewController.swift */,
 				A33CFA4F24F7A3CD009B45AB /* SavedTableViewController.swift */,
 				A33CFA6124F8E833009B45AB /* NewsViewController.swift */,
+				A3A145F12504FCA2005B2233 /* NewsView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				A33CFA5D24F7D59D009B45AB /* EverythingModelView.swift in Sources */,
 				A33CFA0C24F692F0009B45AB /* SceneDelegate.swift in Sources */,
 				A3B43CAF24FC54C000269D08 /* Constant.swift in Sources */,
+				A3A145F22504FCA2005B2233 /* NewsView.swift in Sources */,
 				A33CFA2124F69BE6009B45AB /* Article.swift in Sources */,
 				A33CFA6224F8E833009B45AB /* NewsViewController.swift in Sources */,
 				A33CFA6824F910CE009B45AB /* SaveNews.swift in Sources */,

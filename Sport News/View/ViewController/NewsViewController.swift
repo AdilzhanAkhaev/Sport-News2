@@ -7,75 +7,35 @@
 //
 
 import UIKit
-import SnapKit
 
 class NewsViewController: UIViewController{
-    let image = UIImageView()
-    let titleA = UILabel()
-    let author = UILabel()
-    let content = UILabel()
-    let scrollView = UIScrollView()
     var viewModel = NewsViewModel()
+    var newsView = NewsView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.addSubview(image)
-        scrollView.addSubview(titleA)
-        scrollView.addSubview(author)
-        scrollView.addSubview(content)
-        scrollView.backgroundColor = .white
-        view.addSubview(scrollView)
-        addViewConstraints()
-        configView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveNews))
+    }
+    
+    override func loadView() {
+        self.view = newsView
     }
 
     @objc func saveNews() {
-        viewModel.saveNews()
+        let alert = UIAlertController(title: "Do you want to save the news?", message: "", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            self.viewModel.saveNews()
+        }
+        let notAction = UIAlertAction(title: "No", style: .default) { (action) in
+            print("Click not save")
+        }
+        alert.addAction(yesAction)
+        alert.addAction(notAction)
+        present(alert,animated: true,completion: nil)
     }
     
     func set(article: Article) {
         viewModel.setArticle(article: article)
-        if let url = URL(string: article.urlToImage ?? ""){
-            self.image.kf.setImage(with: url)
-        }
-        self.titleA.text = article.title
-        self.author.text = "Author: \(article.author ?? "Unknown")"
-        self.content.text = article.content
-    }
-    
-    func configView()  {
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
-        titleA.font = .systemFont(ofSize: 23)        
-        titleA.numberOfLines = 0
-        author.font = .systemFont(ofSize: 18)
-        author.numberOfLines = 0
-        content.font = .systemFont(ofSize: 16)
-        content.numberOfLines = 0
-    }
-    
-    func addViewConstraints() {
-        scrollView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-        image.snp.makeConstraints { (make) in
-            make.top.equalTo(scrollView)
-            make.right.left.equalTo(view)
-            make.height.equalTo(image.snp.width).multipliedBy(0.7)
-        }
-        titleA.snp.makeConstraints { (make) in
-            make.top.equalTo(image.snp.bottom)
-            make.right.left.equalTo(view).inset(20)
-        }
-        author.snp.makeConstraints { (make) in
-            make.top.equalTo(titleA.snp.bottom).inset(-5)
-            make.right.left.equalTo(view).inset(20)
-        }
-        content.snp.makeConstraints { (make) in
-            make.top.equalTo(author.snp.bottom).inset(-10)
-            make.right.left.equalTo(view).inset(20)
-            make.bottom.equalTo(scrollView)
-        }
+        newsView.set(article: article)
     }
 }

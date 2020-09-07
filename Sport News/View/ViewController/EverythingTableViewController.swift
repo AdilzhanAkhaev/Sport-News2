@@ -57,7 +57,7 @@ class EverythingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newsViewController = NewsViewController()
         newsViewController.set(article: viewModel.getArtile(for: indexPath.item))
-        navigationController?.pushViewController(newsViewController, animated: false)
+        navigationController?.pushViewController(newsViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
