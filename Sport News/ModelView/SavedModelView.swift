@@ -26,9 +26,13 @@ class SavedModelView: ViewModelProtocol {
     func fetchData() {
         articles.value = []
         let result = realm.objects(SaveNews.self)
+        var duplicate = [""]
         for aricle in result{
             if let saveArticle = aricle.article{
-                self.articles.value.append(saveArticle)
+                if !duplicate.contains(saveArticle.content!){
+                    duplicate.append(saveArticle.content!)
+                    self.articles.value.append(saveArticle)
+                }
             }
         }
     }
