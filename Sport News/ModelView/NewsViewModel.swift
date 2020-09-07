@@ -16,10 +16,19 @@ class NewsViewModel {
         arcticleArray.append(article)
     }
     func saveNews() {
-        try! realm.write {
-            let myReal = SaveNews()
-            myReal.article = arcticleArray.first
-            realm.add(myReal)
+        var duplicate: [String] = []
+        let result = realm.objects(SaveNews.self)
+        for saveArticle in result {
+            duplicate.append((saveArticle.article?.content ?? ""))
+        }
+        if !duplicate.contains((arcticleArray.first?.content)!){
+            try! realm.write {
+                let myReal = SaveNews()
+                myReal.article = arcticleArray.first
+                realm.add(myReal)
+            }
+        }else{
+            print("we have already saved")
         }
     }
 }
